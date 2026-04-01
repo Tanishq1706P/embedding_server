@@ -1,13 +1,13 @@
 FROM python:3.11-slim-bookworm as builder
 
 # Install build deps
-RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \
-    gcc g++ &amp;&amp; \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc g++ && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip &amp;&amp; \
+RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir --only-binary=:all: -r requirements.txt
 
 FROM python:3.11-slim-bookworm
@@ -21,11 +21,11 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 COPY app.py .
 COPY .env.example .
 
-# No build deps needed
-RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends curl &amp;&amp; rm -rf /var/lib/apt/lists/*
+# Runtime deps only (curl for health)
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 
 # Non-root
-RUN useradd --create-home appuser &amp;&amp; chown -R appuser:appuser /app
+RUN useradd --create-home appuser && chown -R appuser:appuser /app
 USER appuser
 
 EXPOSE 10000
