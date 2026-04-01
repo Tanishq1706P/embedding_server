@@ -1,0 +1,115 @@
+﻿# Byte-compiled / C extensions
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtualenvs
+venv_embed/
+.env/
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# DVC
+.dvc/
+
+# Tests
+tests/__pycache__/
+.pytest_cache/
+
+# Learning store test data
+pipelines/summarizer/learning_store.json
+test_learning_store.json
+
+# Docker
+.dockerignore
+
+# Docs
+TODO.md
+README.md
+
+# Byte-compiled / C extensions
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtualenvs / Secrets
+venv_embed/
+env/
+.env
+.env.local
+.env.*.local
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# DVC / Data
+.dvc/
+.dvcignore
+data/
+raw/
+processed/
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs / Temp
+*.log
+logs/
+tmp/
+temp/
+
+# Docker / Build
+.dockerignore
+Dockerfile.*
+*.dockerignore
+
+# Deployment configs (keep Dockerfile)
+render.yaml
+render/
+
+# Learning / temp data
+*.jsonl
+learning_store.json
+test_learning_store.json
+*.db
+data/
+.dvc/
+
+# Docs / dev files
+TODO.md
+*.md~
+README.md~
+
+# Requirements (keep requirements.txt, ignore -dev)
+requirements-dev.txt
+
+# Temp / cache
+.cache/
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / OS / logs
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
