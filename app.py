@@ -164,7 +164,7 @@ async def process_batch(req: BatchRequest):
 @app.get("/health")
 async def health():
     return {
-        "status": "ready",
+        "status": "ready updated",
         "model_loaded": True,
         "api_key_loaded": bool(API_KEY)
     }
