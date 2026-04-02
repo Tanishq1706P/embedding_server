@@ -42,7 +42,14 @@ class BatchRequest(BaseModel):
     collection: str = COLLECTION_EMAILS
     limit: int = 10
 
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or specific domains
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # ---------------- MAIN ----------------
 @app.post("/process-batch")
 async def process_batch(req: BatchRequest):
