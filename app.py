@@ -41,7 +41,14 @@ model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 class BatchRequest(BaseModel):
     collection: str = COLLECTION_EMAILS
     limit: int = 10
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or specific domains
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ---------------- MAIN ----------------
 @app.post("/process-batch")
@@ -162,6 +169,7 @@ async def health():
         "api_key_loaded": bool(API_KEY)
     }
 from fastapi import Query
+
 
 @app.post("/embed-text")
 async def embed_text(text: str = Query(..., description="The text to embed")):
