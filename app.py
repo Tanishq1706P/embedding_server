@@ -161,3 +161,21 @@ async def health():
         "model_loaded": True,
         "api_key_loaded": bool(API_KEY)
     }
+from fastapi import Query
+
+@app.post("/embed-text")
+async def embed_text(text: str = Query(..., description="The text to embed")):
+    """
+    Accepts a single string as input and returns its vector embedding.
+    """
+    if not text.strip():
+        raise HTTPException(400, "Text cannot be empty")
+
+    # Generate embedding
+    embedding = model.encode([text], batch_size=1, show_progress_bar=False)[0]
+
+    return {
+        "text": text,
+        "embedding": embedding.tolist(),
+        "dim": len(embedding)
+    }
